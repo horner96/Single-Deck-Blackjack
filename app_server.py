@@ -11,7 +11,7 @@ PORT = 5500
 PORT = int(os.environ.get("PORT", "5500"))
 STATE_LOCK = threading.Lock()
 NEXT_CLIENT_ID = 1
-INACTIVE_TIMEOUT_SECONDS = 300
+INACTIVE_TIMEOUT_SECONDS = 45
 def make_summary():
     return {"winners": [], "pushes": [], "losers": []}
 GAME = {
