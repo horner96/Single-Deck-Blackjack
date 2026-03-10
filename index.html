@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Single Deck Blackjack</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="gameshell">
+    <h1>Single Deck Blackjack</h1>
+
+    <section class="controls">
+      <p id="turnindicator" aria-live="polite"></p>
+      <p id="message" aria-live="polite"></p>
+    </section>
+
+    <section class="tablearea">
+      <article id="dealerpanel" class="panel dealerpanel">
+        <h2 id="dealertitle">Dealer</h2>
+        <p id="dealerscore"></p>
+        <div id="dealerhand" class="hand"></div>
+        <div id="actionbuttons" class="actionbuttons">
+          <button id="hitbtn" type="button">Hit (H)</button>
+          <button id="standbtn" type="button">Stand (S)</button>
+        </div>
+      </article>
+
+      <section class="playersrow">
+        <article id="player1panel" class="panel">
+          <h2 id="player1title">Player 1</h2>
+          <p id="player1score"></p>
+          <div id="player1hand" class="hand"></div>
+        </article>
+
+        <article id="player2panel" class="panel">
+          <h2 id="player2title">Player 2</h2>
+          <p id="player2score"></p>
+          <div id="player2hand" class="hand"></div>
+        </article>
+      </section>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

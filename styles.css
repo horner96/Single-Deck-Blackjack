@@ -1,0 +1,144 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  background-color: #f5f3ea;
+  background-image: url("Assets/Background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #ffffff;
+}
+
+.gameshell {
+  width: min(94vw, 960px);
+  margin: 1.2rem auto;
+  padding: 1rem;
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.45);
+}
+
+h1,
+h2 {
+  margin: 0.2rem 0 0.6rem;
+}
+
+h1 {
+  text-align: center;
+}
+
+.controls {
+  display: grid;
+  justify-items: center;
+  row-gap: 0.35rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.actionbuttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-basis: 100%;
+  margin-top: 0.25rem;
+}
+
+button {
+  border: 1px solid #264653;
+  background: #264653;
+  color: #ffffff;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#turnindicator {
+  font-weight: 700;
+  margin: 0;
+  width: 100%;
+  color: #ffffff;
+  text-align: center;
+}
+
+#message {
+  margin: 0;
+  min-height: 1.2em;
+  width: 100%;
+  color: #ffffff;
+  font-weight: 700;
+  text-align: center;
+}
+
+.tablearea {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.dealerpanel {
+  width: min(100%, 560px);
+  justify-self: center;
+  text-align: center;
+}
+
+.dealerpanel .hand {
+  justify-content: center;
+}
+
+.playersrow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.playersrow .panel {
+  text-align: center;
+}
+
+.playersrow .hand {
+  justify-content: center;
+}
+
+.panel {
+  border: 3px solid #facc15;
+  border-radius: 10px;
+  padding: 0.3rem;
+  background: transparent;
+}
+
+.hand {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  min-height: 159px;
+}
+
+.card {
+  width: 111px;
+  height: 159px;
+  border: 1px solid #334155;
+  border-radius: 3px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.cardimg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+@media (max-width: 800px) {
+  .playersrow {
+    grid-template-columns: 1fr;
+  }
+}
