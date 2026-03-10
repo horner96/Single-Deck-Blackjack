@@ -7,6 +7,16 @@ const SUIT = { S: "spades", H: "hearts", D: "diamonds", C: "clubs" };
 const makeSummary = () => ({ winners: [], pushes: [], losers: [] });
 const ACTION_BY_KEY = { h: "hit", s: "stand" };
 const SEAT_LABELS = ["Player 1", "Player 2"];
+const API_BASE = (() => {
+  const fromQuery = new URLSearchParams(window.location.search).get("api");
+  if (fromQuery) {
+    const normalized = fromQuery.replace(/\/$/, "");
+    window.localStorage.setItem("blackjackApiBase", normalized);
+    return normalized;
+  }
+  return (window.localStorage.getItem("blackjackApiBase") || "").replace(/\/$/, "");
+})();
+const apiUrl = (path) => `${API_BASE}${path}`;
 let youId = null;
 let state = null;
 let poll = null;
@@ -141,7 +151,7 @@ const setActions = (on) => {
 };
 async function joinGame() {
   try {
-    const res = await fetch("/api/join", {
+    const res = await fetch(apiUrl("/api/join"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({})
@@ -167,7 +177,7 @@ async function joinGame() {
 function leaveGame() {
   if (!youId || local) return;
   const body = JSON.stringify({ clientId: youId });
-  navigator.sendBeacon("/api/leave", new Blob([body], { type: "application/json" }));
+  navigator.sendBeacon(apiUrl("/api/leave"), new Blob([body], { type: "application/json" }));
 }
 async function fetchState() {
   if (local) {
@@ -176,7 +186,7 @@ async function fetchState() {
   }
   if (!youId) return;
   try {
-    const res = await fetch(`/api/state?clientId=${encodeURIComponent(String(youId))}`);
+    const res = await fetch(apiUrl(`/api/state?clientId=${encodeURIComponent(String(youId))}`));
     state = await res.json();
     render();
   } catch {
@@ -195,7 +205,7 @@ function sendAction(action) {
     return fetchState();
   }
   if (!youId) return;
-  fetch("/api/action", {
+  fetch(apiUrl("/api/action"), {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ clientId: youId, action })

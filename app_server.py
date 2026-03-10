@@ -1,4 +1,5 @@
 import json
+import os
 import random
 import threading
 import time
@@ -7,6 +8,7 @@ from pathlib import Path
 from urllib.parse import parse_qs, unquote, urlparse
 ROOT = Path(__file__).parent
 PORT = 5500
+PORT = int(os.environ.get("PORT", "5500"))
 STATE_LOCK = threading.Lock()
 NEXT_CLIENT_ID = 1
 INACTIVE_TIMEOUT_SECONDS = 300
@@ -189,6 +191,16 @@ def public_state(client_id):
         "dealerResolving": GAME["dealer_resolving"],
     }
 class Handler(BaseHTTPRequestHandler):
+    def end_headers(self):
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+        super().end_headers()
+
+    def do_OPTIONS(self):
+        self.send_response(204)
+        self.end_headers()
+
     def do_GET(self):
         parsed = urlparse(self.path)
         if parsed.path == "/api/state":
