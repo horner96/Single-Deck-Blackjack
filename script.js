@@ -162,7 +162,6 @@ async function joinGame() {
     engine.init();
     state = engine.snapshot();
     render();
-    window.alert("Backend unavailable. Running in Local Mode for GitHub Pages/demo use.");
   }
 }
 function leaveGame() {
