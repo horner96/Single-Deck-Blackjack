@@ -135,7 +135,6 @@ const engine = {
       over: g.over,
       turnIndex: g.turnIndex,
       message: g.message,
-      deckCount: g.deck.length,
       dealerHand: g.dealer,
       dealerScore: this.score(g.dealer),
       players: g.players.map((p) => ({ ...p, score: this.score(p.hand) })),

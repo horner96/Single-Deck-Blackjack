@@ -183,7 +183,6 @@ def public_state(client_id):
         "over": GAME["over"],
         "turnIndex": GAME["turn_index"],
         "message": GAME["message"],
-        "deckCount": len(GAME["deck"]),
         "dealerHand": GAME["dealer"],
         "dealerScore": score(GAME["dealer"]),
         "players": players,
